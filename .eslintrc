@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "standard"
+  ],
+  "globals": {
+    "fetch": true,
+    "Date": true
+  },
+  "rules": {
+    "object-curly-spacing": 0
+  }
+}
