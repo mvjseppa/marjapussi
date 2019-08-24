@@ -16,7 +16,9 @@ export const deal = () => {
 }
 
 export const emptyGame = {
-  players: [[], [], [], []],
+  playerNo: 0,
+  cardCounts: [0, 0, 0, 0],
+  visibleHand: [],
   table: [],
   discard: [],
   turn: 0
@@ -34,13 +36,14 @@ const shuffleAndDeal = () => {
     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
   }
 
+  const playerNo = Math.floor(Math.random() * (4)) + 1
+  let cardCounts = [9, 9, 9, 9]
+  let visibleHand = shuffled.slice(0, 9)
+
   return {
     ...emptyGame,
-    players: [
-      shuffled.slice(0, 9),
-      shuffled.slice(9, 18),
-      shuffled.slice(18, 27),
-      shuffled.slice(27, 36)
-    ]
+    cardCounts,
+    visibleHand,
+    playerNo
   }
 }

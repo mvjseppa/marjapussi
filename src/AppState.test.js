@@ -19,28 +19,32 @@ it('in the deal every player gets 9 cards', () => {
   store.dispatch(deal())
   const state = store.getState()
   for (let i = 0; i < 4; i++) {
-    expect(state.players[i].length).toEqual(9)
+    expect(state.cardCounts[i]).toEqual(9)
   }
+
+  expect(state.turn).toEqual(0)
+  expect(state.playerNo).toBeGreaterThanOrEqual(0)
+  expect(state.playerNo).toBeLessThan(4)
 })
 
 it('when a card is played it goes to the table', () => {
-  const oldState = store.getState()
-  const card = oldState.players[0][3]
+  let state = store.getState()
+  while (state.turn < state.playerNo) {
+    const lastPlayer = state.turn
+    store.dispatch(playCard('dummy'))
+    state = store.getState()
+    expect(state.cardCounts[lastPlayer]).toEqual(8)
+  }
+
+  expect(state.turn).toEqual(state.playerNo)
+
+  const card = state.visibleHand[2]
   store.dispatch(playCard(card))
+  state = store.getState()
 
-  const newState = store.getState()
-  expect(newState.players[0].length).toEqual(8)
-  expect(newState.players[0].includes(card)).toEqual(false)
-  expect(newState.table.length).toEqual(1)
-  expect(newState.table.includes(card)).toEqual(true)
-  expect(newState.turn).toEqual(1)
-})
-
-it('cannot play a card that is not in hand', () => {
-  const oldState = store.getState()
-
-  store.dispatch(playCard('QW'))
-  expect(store.getState()).toEqual(oldState)
+  expect(state.cardCounts[state.playerNo]).toEqual(8)
+  expect(state.visibleHand.includes(card)).toEqual(false)
+  expect(state.table.includes(card)).toEqual(true)
 })
 
 afterAll(() => {

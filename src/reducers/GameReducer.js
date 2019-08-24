@@ -9,22 +9,20 @@ export default function (state = emptyGame, action) {
 
     case PLAY_CARD:
       const card = action.payload
-      const player = state.turn % 4
 
-      if (state.players[player].includes(card)) {
-        let newState = {...state}
-        newState.turn++
-        newState.players[player] = newState.players[player].filter(c => c !== card)
-        newState.table.push(card)
+      let newState = {...state}
+      newState.table.push(card)
+      newState.cardCounts[newState.turn]--
+      if (state.turn === state.playerNo) {
+        newState.visibleHand = newState.visibleHand.filter(c => c !== card)
+      }
+      newState.turn = state.turn < 3 ? state.turn + 1 : 0
 
-        if (newState.table.length >= 4) {
-          console.log('Trick is full, should score here!')
-        }
-
-        return newState
+      if (newState.table.length >= 4) {
+        console.log('Trick is full, should score here!')
       }
 
-      return state
+      return newState
 
     default:
       return state
