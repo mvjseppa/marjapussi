@@ -1,107 +1,125 @@
 .App {
   text-align: center;
+  background-color: #147F0E;
+  width:100vw;
+  height:100vh;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
+.hand-cards {
+  height: 100vh;
+  display: inline-flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-.playerCards0 {
-  width: 100vw;
-  min-height: 50vh;
-  position: absolute;
-  top: 0;
-  left:0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
 }
 
-.playerCards1 {
-  width: 50vw;
-  min-height: 100vh;
-  position: absolute;
-  top: 0;
-  right:0;
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  justify-content: center;
+.hand-row{
+  background-color: rgba(255, 0, 0, 0.5);
 }
 
-.playerCards2 {
-  width: 100vw;
-  min-height: 50vh;
-  position: absolute;
-  bottom: 0;
-  left:0;
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-  justify-content: center;
-}
-
-.playerCards3 {
-  width: 50vw;
-  min-height: 100vh;
-  position: absolute;
-  top: 0;
-  left:0;
+.hand0{
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  flex-grow: 0;
+}
+
+.hand1 {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0;
+}
+
+.hand2 {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 0;
+}
+
+.hand3 {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0;
 }
 
 .hand-row {
+  width: 100vw;
   display: flex;
   flex-direction: row;
-  flex-grow: 0;
-}
-
-.hand-column{
-  display: flex;
-  flex-direction: column;
-  flex-grow: 0;
 }
 
 .padding {
   display: flex;
-  flex-direction: row;
-  min-width: 40px;
-  min-height: 40px;
+  flex-grow: 3;
+}
+
+.padding-half {
+  display: flex;
   flex-grow: 1;
 }
 
-.table {
-  display: flex;
-  flex-direction: row;
-  flex-grow: 0;
+.table-cards {
+  border: 1px solid olive;
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  width: 100px;
+  height: 160px;
+  margin-left: -50px;
+  margin-top: -80px;
+}
+
+.table0{
+  position: absolute;
+  top: -10px;
+  left: 25px;
+  transform: rotate(180deg);
+}
+
+.table1 {
+  position: absolute;
+  top: 40px;
+  left: 70px;
+  transform: rotate(-90deg);
+}
+
+.table2 {
+  position: absolute;
+  top: 90px;
+  left: 25px;
+}
+
+.table3 {
+  position: absolute;
+  top: 40px;
+  left: -20px;
+  transform: rotate(90deg);
+}
+
+.table0:hover{
+  transform: translateY(-20px);
+}
+
+.table1:hover{
+  transform: translateX(10px);
+}
+
+.table2:hover{
+  transform: translateY(20px);
+}
+
+.table3:hover{
+  transform: translateX(-10px);
 }
 
 .card {
   border: 1px solid black;
+  background-color: #FFFFD8;
   width: 50px;
   height: 80px;
   font-size: 16pt;
+}
+
+.card:hover{
+  transform: scale(1.5,1.5);
 }
 
 .card-red {
