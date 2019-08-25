@@ -19,11 +19,15 @@ class PlayerCards extends React.Component {
 
   render () {
     const {table} = this.props.player.cards
+    const {position} = this.props.player
+
+    const handClassName = position % 2 === 0 ? 'hand-row' : 'hand-column'
 
     return (
-      <div className='playerCards'>
-        <div className='hand'>{this.renderHandCards()}</div>
-        <div className='table'>{table}</div>
+      <div className={'playerCards' + position}>
+        <div className={handClassName}>{this.renderHandCards()}</div>
+        <div className='padding'/>
+        <div className='table'><Card cardValue={table}/></div>
       </div>
     )
   }
