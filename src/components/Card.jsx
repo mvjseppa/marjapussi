@@ -48,19 +48,21 @@ class Card extends React.Component {
   }
 
   render () {
-    let { cardValue } = this.props
+    let { cardValue, overlap } = this.props
 
     const viewBox = this.getCardViewBox()
 
     const src = `${cards}`
-    // const viewBox = '0 0 100 145'
 
     const divClass = cardValue.startsWith('♥') || cardValue.startsWith('♦')
       ? 'card card-red' : 'card card-black'
 
+    const margin = overlap ? `${-6 * overlap}vw` : 0
+    console.log(margin)
+
     return (
-      <div width="100" height="145.3" className={divClass} onClick={this.handleClick}>
-        <svg viewBox={viewBox} >
+      <div className={divClass} onClick={this.handleClick} style={{marginRight: margin}}>
+        <svg width="100" height="145.3" viewBox={viewBox} >
           <image href={src} />
         </svg>
       </div>

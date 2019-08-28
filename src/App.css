@@ -1,66 +1,57 @@
 .App {
   text-align: center;
   background-color: #147F0E;
-  width:100vw;
-  height:100vh;
 }
 
 .hand-cards {
   height: 100vh;
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
-  align-items: stretch;
+  justify-content: space-around;
+  padding-left: 10vw;
+  padding-right: 10vw;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+}
+
+.hand-horizontal {
+  display: flex;
+  flex-direction: row;
   justify-content: center;
 }
 
-.hand-row{
+.hand-vertical {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  justify-content: space-between;
 }
+
 
 .hand0{
   display: flex;
   flex-direction: row;
-  flex-grow: 0;
+  justify-content: center;
 }
 
 .hand1 {
+  border: 1px solid red;
   display: flex;
-  flex-direction: column;
-  flex-grow: 0;
-  min-height: 30vw;
+  flex-direction: row;
+  transform: translateX(50%) rotate(90deg);
 }
 
 .hand2 {
   display: flex;
   flex-direction: row;
-  flex-grow: 0;
+  justify-content: center;
 }
 
 .hand3 {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 0;
-  min-height: 30vw;
-}
-
-.hand-row {
-  width: 100vw;
+  border: 1px solid red;
   display: flex;
   flex-direction: row;
-}
-
-.padding {
-  max-height: 10px;
-  display: flex;
-  flex-grow: 3;
-}
-
-.padding-half {
-  max-height: 10px;
-  display: flex;
-  flex-grow: 1;
+  transform: translateX(-50%) rotate(90deg);
+  min-width: 50vh
 }
 
 .table-cards {
@@ -68,10 +59,10 @@
   position: absolute;
   top: 50vh;
   left: 50vw;
-  width: 5vw;
-  height: 7.5vw;
-  margin-left: -2.5vw;
-  margin-top: -3.75vw;
+  width: 10vw;
+  height: 10vw;
+  margin-left: -5vw;
+  margin-top: -5vw;
 }
 
 .table0{
@@ -124,30 +115,6 @@
 
 .card:hover{
   transform: scale(1.5,1.5);
-}
-
-.card-red {
-  color: red
-}
-
-.card-black {
-  color: black
-}
-
-.hand1 > .card {
-  height: 5vw;
-}
-
-.hand1 > .card > svg{
-  transform: rotate(90deg);
-}
-
-.hand3 > .card {
-  height: 5vw;
-}
-
-.hand3 > .card > svg{
-  transform: rotate(90deg);
 }
 
 

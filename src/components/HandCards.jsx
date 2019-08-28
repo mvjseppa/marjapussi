@@ -7,11 +7,11 @@ class HandCards extends React.Component {
     const {hand} = player.cards
 
     if (Array.isArray(hand)) {
-      return hand.map((card, i) => (<Card key={i} cardValue={card} />))
+      return hand.map((card, i) => (<Card key={i} cardValue={card} overlap={hand.length / 13} />))
     } else {
       let cards = []
       for (let i = 0; i < hand; i++) {
-        cards.push(<Card key={i} cardValue='B3' />)
+        cards.push(<Card key={i} cardValue='B3' overlap={hand / 13}/>)
       }
       return cards
     }
@@ -28,23 +28,12 @@ class HandCards extends React.Component {
 
     return (
       <div className='hand-cards'>
-        <div className='hand-row'>
-          <div className='padding' />
-          {hands[0]}
-          <div className='padding' />
-        </div>
-        <div className='hand-row'>
-          <div className='padding-half'/>
+        <div className='hand-horizontal'>{hands[0]}</div>
+        <div className='hand-vertical'>
           {hands[3]}
-          <div className='padding'/>
           {hands[1]}
-          <div className='padding-half'/>
         </div>
-        <div className='hand-row'>
-          <div className='padding' />
-          {hands[2]}
-          <div className='padding' />
-        </div>
+        <div className='hand-horizontal'>{hands[2]}</div>
       </div>
     )
   }
