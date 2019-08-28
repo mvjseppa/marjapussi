@@ -11,7 +11,7 @@ class HandCards extends React.Component {
     } else {
       let cards = []
       for (let i = 0; i < hand; i++) {
-        cards.push(<Card key={i} cardValue='X' />)
+        cards.push(<Card key={i} cardValue='B3' />)
       }
       return cards
     }

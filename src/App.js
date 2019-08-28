@@ -29,7 +29,7 @@ const players = [
     'id': '152e7da3-0b22-4ced-8dc9-0db9eeba973d',
     'connection_id': 'e4DZ3c-qFiACEJQ=',
     'cards': {
-      'hand': 6,
+      'hand': 3,
       'table': 'HK',
       'won': []
     },
@@ -51,7 +51,7 @@ const players = [
     'id': '152e7da3-0b22-4ced-8dc9-0db9eeba973d',
     'connection_id': 'e4DZ3c-qFiACEJQ=',
     'cards': {
-      'hand': 6,
+      'hand': 9,
       'table': 'CA',
       'won': []
     },

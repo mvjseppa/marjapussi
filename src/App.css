@@ -9,11 +9,14 @@
   height: 100vh;
   display: inline-flex;
   flex-direction: column;
+  align-items: stretch;
   justify-content: center;
 }
 
 .hand-row{
-  background-color: rgba(255, 0, 0, 0.5);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
 }
 
 .hand0{
@@ -26,6 +29,7 @@
   display: flex;
   flex-direction: column;
   flex-grow: 0;
+  min-height: 30vw;
 }
 
 .hand2 {
@@ -38,6 +42,7 @@
   display: flex;
   flex-direction: column;
   flex-grow: 0;
+  min-height: 30vw;
 }
 
 .hand-row {
@@ -47,11 +52,13 @@
 }
 
 .padding {
+  max-height: 10px;
   display: flex;
   flex-grow: 3;
 }
 
 .padding-half {
+  max-height: 10px;
   display: flex;
   flex-grow: 1;
 }
@@ -61,36 +68,36 @@
   position: absolute;
   top: 50vh;
   left: 50vw;
-  width: 100px;
-  height: 160px;
-  margin-left: -50px;
-  margin-top: -80px;
+  width: 5vw;
+  height: 7.5vw;
+  margin-left: -2.5vw;
+  margin-top: -3.75vw;
 }
 
 .table0{
   position: absolute;
-  top: -10px;
-  left: 25px;
+  top: -2vw;
+  left: 1vw;
   transform: rotate(180deg);
 }
 
 .table1 {
   position: absolute;
-  top: 40px;
-  left: 70px;
+  top: 1vw;
+  left: 3.75vw;
   transform: rotate(-90deg);
 }
 
 .table2 {
   position: absolute;
-  top: 90px;
-  left: 25px;
+  top: 2vw;
+  left: -1vw;
 }
 
 .table3 {
   position: absolute;
-  top: 40px;
-  left: -20px;
+  top: -1vw;
+  left: -3.75vw;
   transform: rotate(90deg);
 }
 
@@ -111,10 +118,7 @@
 }
 
 .card {
-  border: 1px solid black;
-  background-color: #FFFFD8;
-  width: 50px;
-  height: 80px;
+  width: 7vw;
   font-size: 16pt;
 }
 
@@ -129,6 +133,23 @@
 .card-black {
   color: black
 }
+
+.hand1 > .card {
+  height: 5vw;
+}
+
+.hand1 > .card > svg{
+  transform: rotate(90deg);
+}
+
+.hand3 > .card {
+  height: 5vw;
+}
+
+.hand3 > .card > svg{
+  transform: rotate(90deg);
+}
+
 
 @keyframes App-logo-spin {
   from {
