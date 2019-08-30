@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Card from './Card'
 
-class HandCards extends React.Component {
+class TableCards extends React.Component {
   renderHandCards (player) {
     const {hand} = player.cards
 
@@ -19,6 +19,10 @@ class HandCards extends React.Component {
 
   render () {
     const players = this.props.players
+
+    if (players.includes(null)) {
+      return <div/>
+    }
 
     const tableCards = players.map((player, i) => {
       const {position} = player
@@ -42,4 +46,4 @@ function mapStateToProps (state) {
   return {}
 }
 
-export default connect(mapStateToProps)(HandCards)
+export default connect(mapStateToProps)(TableCards)

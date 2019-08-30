@@ -7,10 +7,13 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import ReduxPromise from 'redux-promise'
 import thunk from 'redux-thunk'
+import reduxWebsocket from 'react-redux-websocket'
 import reducers from './reducers/index'
 
+const socket = new WebSocket('wss://mk21sfhu5k.execute-api.eu-central-1.amazonaws.com/dev')
+
 ReactDOM.render(
-  <Provider store={applyMiddleware(thunk, ReduxPromise)(createStore)(reducers)}>
+  <Provider store={applyMiddleware(thunk, ReduxPromise, reduxWebsocket(socket))(createStore)(reducers)}>
     <App />
   </Provider>,
   document.getElementById('root')

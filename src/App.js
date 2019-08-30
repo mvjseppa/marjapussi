@@ -1,72 +1,45 @@
 import React from 'react'
-import logo from './logo.svg'
+import { connect } from 'react-redux'
 import './App.css'
 import HandCards from './components/HandCards'
 import TableCards from './components/TableCards'
+import Lobby from './components/Lobby'
 
-const players = [
-  {
-    'id': '152e7da3-0b22-4ced-8dc9-0db9eeba973d',
-    'connection_id': 'e4DZ3c-qFiACEJQ=',
-    'cards': {
-      'hand': [
-        'HJ',
-        'C10',
-        'S10',
-        'SJ',
-        'S9',
-        'SK',
-        'HA',
-        'H10'
-      ],
-      'table': 'DQ',
-      'won': []
-    },
-    'position': 0,
-    'score': 0
-  },
-  {
-    'id': '152e7da3-0b22-4ced-8dc9-0db9eeba973d',
-    'connection_id': 'e4DZ3c-qFiACEJQ=',
-    'cards': {
-      'hand': 3,
-      'table': 'HK',
-      'won': []
-    },
-    'position': 1,
-    'score': 0
-  },
-  {
-    'id': '152e7da3-0b22-4ced-8dc9-0db9eeba973d',
-    'connection_id': 'e4DZ3c-qFiACEJQ=',
-    'cards': {
-      'hand': 6,
-      'table': 'SA',
-      'won': []
-    },
-    'position': 2,
-    'score': 0
-  },
-  {
-    'id': '152e7da3-0b22-4ced-8dc9-0db9eeba973d',
-    'connection_id': 'e4DZ3c-qFiACEJQ=',
-    'cards': {
-      'hand': 9,
-      'table': 'CA',
-      'won': []
-    },
-    'position': 3,
-    'score': 0
+class App extends React.Component {
+  renderLobby = () => {
+    return (
+      <div className="App">
+        <Lobby/>
+      </div>
+    )
   }
-]
 
-function App () {
-  return (
-    <div className="App">
-      <HandCards players={players}/>
-      <TableCards players={players}/>
-    </div>
-  )
+  renderGame = () => {
+    const {gameState} = this.props
+    return (
+      <div className="App">
+        <HandCards players={gameState.players}/>
+        <TableCards players={gameState.players}/>
+      </div>
+    )
+  }
+
+  render () {
+    const {gameState} = this.props
+    if(gameState !== null){
+      return this.renderGame()
+    }
+
+    return this.renderLobby()
+  }
 }
 
-export default App
+const mapStateToProps = ({GameReducer, LobbyReducer}) => {
+  console.log('App state change!')
+  console.log(GameReducer)
+  return {
+    gameState: GameReducer.gameState
+  }
+}
+
+export default connect(mapStateToProps)(App)

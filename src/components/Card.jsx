@@ -50,6 +50,10 @@ class Card extends React.Component {
   render () {
     let { cardValue, overlap } = this.props
 
+    if (cardValue === null) {
+      return <div/>
+    }
+
     const viewBox = this.getCardViewBox()
 
     const src = `${cards}`

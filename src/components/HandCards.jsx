@@ -20,6 +20,10 @@ class HandCards extends React.Component {
   render () {
     const players = this.props.players
 
+    if (players.includes(null)) {
+      return <div>waiting for players</div>
+    }
+
     const hands = players.map((player, i) => {
       const {position} = player
       const handClassName = 'hand' + position

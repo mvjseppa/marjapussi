@@ -1,29 +1,38 @@
-import { PLAY_CARD, DEAL, emptyGame } from '../actions/GameActions'
+import { PLAY_CARD, UPDATE_GAME_STATE, ERROR } from '../actions/GameActions'
 
-export default function (state = emptyGame, action) {
+const initialState = {
+  gameId: null,
+  playerId: null,
+  gameState: null
+}
+
+export default function (state = initialState, action) {
   console.log('action received:', action.type)
 
   switch (action.type) {
-    case DEAL:
-      return action.payload
+    case UPDATE_GAME_STATE:
+      if (state.gameId !== null && action.gameId !== state.gameId) {
+        console.log('invalid state: gameId')
+        return state
+      }
+
+      if (state.playerId !== null && action.playerId !== state.playerId) {
+        console.log('invalid state: playerId')
+        return state
+      }
+
+      return {
+        ...state,
+        gameId: action.gameId,
+        playerId: action.playerId,
+        gameState: action.gameState
+      }
+
+    case ERROR:
+      console.error('Error: ' + action.message)
+      return state
 
     case PLAY_CARD:
-      const card = action.payload
-
-      let newState = {...state}
-      newState.table.push(card)
-      newState.cardCounts[newState.turn]--
-      if (state.turn === state.playerNo) {
-        newState.visibleHand = newState.visibleHand.filter(c => c !== card)
-      }
-      newState.turn = state.turn < 3 ? state.turn + 1 : 0
-
-      if (newState.table.length >= 4) {
-        console.log('Trick is full, should score here!')
-      }
-
-      return newState
-
     default:
       return state
   }
