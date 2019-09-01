@@ -23,10 +23,11 @@ export const createGame = (playerName) => {
   }
 }
 
-export const joinGame = (gameId, playerId) => {
+export const joinGame = (gameId, playerName, playerId) => {
   return {
     type: JOIN_GAME,
     gameId,
+    playerName,
     playerId,
     socket: {
       send: true

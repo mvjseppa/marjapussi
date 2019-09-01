@@ -5,7 +5,7 @@ export default function (state = {}, action) {
 
   switch (action.type) {
     case GAME_LIST_READY:
-      return {gameIds: action.gameIds}
+      return {...state, gameList: action.gameList}
 
     case LIST_GAMES:
     case JOIN_GAME:
