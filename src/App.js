@@ -26,7 +26,7 @@ class App extends React.Component {
 
   render () {
     const {gameState} = this.props
-    if(gameState !== null){
+    if (gameState !== null) {
       return this.renderGame()
     }
 

@@ -13,10 +13,10 @@ export const listGames = () => {
   }
 }
 
-export const createGame = () => {
+export const createGame = (playerName) => {
   return {
     type: CREATE_GAME,
-    payload: {},
+    playerName,
     socket: {
       send: true
     }

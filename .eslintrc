@@ -2,6 +2,7 @@
   "extends": [
     "standard"
   ],
+  "parser": "babel-eslint",
   "globals": {
     "fetch": true,
     "Date": true

@@ -1,4 +1,4 @@
-import { PLAY_CARD, UPDATE_GAME_STATE, ERROR } from '../actions/GameActions'
+import { PLAY_CARD, UPDATE_GAME_STATE, ERROR, SET_PLAYER_NAME } from '../actions/GameActions'
 
 const initialState = {
   gameId: null,
@@ -27,6 +27,9 @@ export default function (state = initialState, action) {
         playerId: action.playerId,
         gameState: action.gameState
       }
+
+    case SET_PLAYER_NAME:
+      return {...state, playerName: action.playerName}
 
     case ERROR:
       console.error('Error: ' + action.message)
