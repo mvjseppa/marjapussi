@@ -13,6 +13,7 @@ export default function (state = initialState, action) {
     case UPDATE_GAME_STATE:
       if (state.gameId !== null && action.gameId !== state.gameId) {
         console.log('invalid state: gameId')
+        console.log(`state id is: ${state.gameId}, action id is ${action.gameId}`)
         return state
       }
 

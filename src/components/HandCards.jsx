@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Card from './Card'
 
 class HandCards extends React.Component {
-  renderHandCards (player) {
+  renderHandCards = (player) => {
     const {hand} = player.cards
 
     if (Array.isArray(hand)) {
@@ -17,17 +17,36 @@ class HandCards extends React.Component {
     }
   }
 
+  renderWaitingForPlayers = () => {
+    return (
+      <div>
+        <div>Waiting for Players</div>
+        {
+          this.props.players.map(player => {
+            if (player) return (<div>{player.name}</div>)
+            return null
+          })
+        }
+      </div>
+    )
+  }
+
   render () {
     const players = this.props.players
 
     if (players.includes(null)) {
-      return <div>waiting for players</div>
+      return this.renderWaitingForPlayers()
     }
 
     const hands = players.map((player, i) => {
-      const {position} = player
+      const {position, name} = player
       const handClassName = 'hand' + position
-      return <div key={i} className={handClassName}>{this.renderHandCards(player)}</div>
+      return (
+        <div className='hand-card-wrapper'>
+          <div className={handClassName} key={i}>{this.renderHandCards(player)}</div>
+          <div className='player-name'>{name}</div>
+        </div>
+      )
     })
 
     return (

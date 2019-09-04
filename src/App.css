@@ -14,6 +14,11 @@
   padding-bottom: 1vh;
 }
 
+.hand-card-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
 .hand-horizontal {
   display: flex;
   flex-direction: row;

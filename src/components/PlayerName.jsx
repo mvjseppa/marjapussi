@@ -18,6 +18,7 @@ class PlayerName extends React.Component {
     } else {
       return (
         <form onSubmit={this.handleSubmit}>
+          <h2>Welcome! Who are you?</h2>
           <input type='text' placeholder='Enter your name' ref={(e) => { this.nameInput = e }}/>
           <input type='submit' value='set name' />
         </form>

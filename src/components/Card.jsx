@@ -11,10 +11,10 @@ class Card extends React.Component {
   }
 
   handleClick () {
-    const {cardValue, dispatch} = this.props
+    const {cardValue, dispatch, gameId, playerId} = this.props
     console.log(`${dispatch}`)
     console.log(`clicked card: ${cardValue}`)
-    dispatch(playCard(cardValue))
+    dispatch(playCard(cardValue, gameId, playerId))
   }
 
   getCardViewBox () {
@@ -74,8 +74,11 @@ class Card extends React.Component {
   }
 }
 
-function mapStateToProps (state) {
-  return {}
+function mapStateToProps ({GameReducer}) {
+  return {
+    playerId: GameReducer.playerId,
+    gameId: GameReducer.gameId
+  }
 }
 
 export default connect(mapStateToProps)(Card)

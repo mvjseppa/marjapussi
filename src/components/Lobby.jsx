@@ -32,20 +32,42 @@ class Lobby extends React.Component {
     }
   }
 
-  render () {
+  renderGameList = () => {
     const {gameList} = this.props
 
-    let gameDivs = []
     if (gameList) {
-      gameDivs = gameList.map((game) => (
-        <div key={game.id} onClick={this.handleJoinClick(game.id)}>{game.name}</div>)
+      return (
+        <menu>
+          {
+            gameList.map((game) => (
+              <li key={game.id}>
+                {game.name}
+                <input type='button' value='Join' onClick={this.handleJoinClick(game.id)}/>
+              </li>
+            ))
+          }
+        </menu>
+      )
+    }
+
+    return null
+  }
+
+  render () {
+    const {playerName} = this.props
+
+    if (!playerName) {
+      return (
+        <div className='lobby'>
+          <PlayerName/>
+        </div>
       )
     }
 
     return (
       <div className='lobby'>
-        <PlayerName/>
-        {gameDivs}
+        <h2>Hello, {playerName}! Select a game:</h2>
+        {this.renderGameList()}
         <input type='button' value='New Game' onClick={this.handleCreateClick}/>
       </div>
     )
