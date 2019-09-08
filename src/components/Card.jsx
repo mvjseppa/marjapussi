@@ -61,12 +61,12 @@ class Card extends React.Component {
     const divClass = cardValue.startsWith('♥') || cardValue.startsWith('♦')
       ? 'card card-red' : 'card card-black'
 
-    const margin = overlap ? `${-6 * overlap}vw` : 0
+    const margin = overlap ? `${-12 * overlap}vh` : 0
     console.log(margin)
 
     return (
       <div className={divClass} onClick={this.handleClick} style={{marginRight: margin}}>
-        <svg width="100" height="145.3" viewBox={viewBox} >
+        <svg width="100%" height="100%" viewBox={viewBox} >
           <image href={src} />
         </svg>
       </div>

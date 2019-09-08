@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { setPlayerName } from '../actions/GameActions'
+import { listGames } from '../actions/LobbyActions'
 
 class PlayerName extends React.Component {
   handleSubmit = (e) => {
@@ -8,6 +9,7 @@ class PlayerName extends React.Component {
     const {dispatch} = this.props
     const playerName = this.nameInput.value
     dispatch(setPlayerName(playerName))
+    dispatch(listGames)
   }
 
   render () {

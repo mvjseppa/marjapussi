@@ -17,6 +17,15 @@ class TableCards extends React.Component {
     }
   }
 
+  sortPlayers = () => {
+    const {players, playerId} = this.props
+    for (let i = 0; i < 4; i++) {
+      if (players[0].id !== playerId) {
+        players.push(players.shift())
+      }
+    }
+  }
+
   render () {
     const players = this.props.players
 
@@ -24,9 +33,11 @@ class TableCards extends React.Component {
       return <div/>
     }
 
+    this.sortPlayers()
+
     const tableCards = players.map((player, i) => {
       const {position} = player
-      const tableClassName = 'table' + position
+      const tableClassName = 'table' + i
       console.log(player)
       console.log(player.cards.table)
       return <div key={i} className={tableClassName} style={{zIndex: position}}>
@@ -42,8 +53,11 @@ class TableCards extends React.Component {
   }
 }
 
-function mapStateToProps (state) {
-  return {}
+function mapStateToProps ({GameReducer}) {
+  return {
+    playerId: GameReducer.playerId,
+    players: GameReducer.gameState.players
+  }
 }
 
 export default connect(mapStateToProps)(TableCards)

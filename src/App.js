@@ -19,8 +19,8 @@ class App extends React.Component {
     return (
       <div className="App">
         <div>{gameState.name}</div>
-        <HandCards players={gameState.players}/>
-        <TableCards players={gameState.players}/>
+        <HandCards/>
+        <TableCards/>
       </div>
     )
   }
